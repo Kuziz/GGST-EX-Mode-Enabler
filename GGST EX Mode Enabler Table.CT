@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <Forms>
+    <GGSTBossFlagSetter Class="TCEForm" Encoding="Ascii85">wUp0J,b_q{9fvk8tu!:FNZVw?eIh/;XgjQ-EfPaSBxu_wm$,=2h$F^A?D4lxudzuxOxg=ZBzp{K#}2!d6eN1fzn^M@$tRE70Ql{],wz@@i1G8c/FV%tSelL@GV]bql(@fJQ),3Dy,@}?T$ulW;9fSV1,5:pAm-+T!+WO;LKe5+7t=5Xf){=f)J(@Hh.lS#9N}{KxbH,EjfGyOSDx!t4r3:]DYf1]b?+Ah$-AJJn}pilk@#HyyAipf,=MCk6RzEBUQ12bQkH+#w)OKs$X+bFmkU0BfK}bjosLf=hdiJh0=[x5ND#6=CIpLD65Df2=1sX@bxGYSsqpIq*XVrqctIlhn(IhL=Q6REg7WTT/_4H1,Qm;U[KU)EYi!;WWJb^@RLp4fhgx*Tp#nE5?Q!N[PoBjeD=HWsHzoda)ZqrQsx;Irt}gY]de@mg!=gG^wGyjJVn/6?yL3vjNLbFCo{SU5t1UKbE!5*]4b#dGJ.9Q0^zqye#19dg_3UK#?rx?oDiyl.wJXF8D#XjF5I3q2FR=:0utKalSx$wxL51DC!qTSqZNf64dXNeJzE2Qt$nE,?ZP##L8?1$6FW.,4bVSn{1]RE;RU]EX@7QL}I^</GGSTBossFlagSetter>
+    <AboutWindow Class="TCEForm" Encoding="Ascii85">U6HX*8$l3.[wK@k7KuVbk#3MEBMZ=*N:F;5NH!Q?M;LV5xx4Y+%IBTa=wH604X=oC/Q+t?8VaOjZw/jpx3lxl%%{hV6e}5m7#=,IgVQ0}/=czwE4k99.9qaXG=)NqO23gVD}WHC88@wJ,PTt(RLOnR8DJxtO{Z1N-VSO[MqbproARG^Vg?xk;g.cw[{ShJ-;M{zqb0xJYPWTui2po8B*6*ih?YMz9-=/,ZOHYfVznt/l(0Sumh=GQDS3c:0c:1jf{E]-+RUzP4lEX$AzO+CaWH2Kgn0!]jcc,X3{i5=2^LvL?)L}H.u^%Nc(*t{O#x0(T.Cu1dg6fRP}wu^nymAdz.XZR[?lpFuK{CJgM?W^?i}?k@=J3=VaaF;BkdN^SKUj)V(VsS-5F+RTab-acS]kC(]NyR@UpDvQYxRB;Uq1q1pK]%!-AEY,/vQ/,(%:yerz0zN3W?E??RAMK6MVZbNPQ}ki2q5p5QM</AboutWindow>
+  </Forms>
+  <CheatEntries>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"P1 boss flag pointer"</Description>
+      <LastState Value="0" RealAddress="2102AA33D2B"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>"GGST-Win64-Shipping.exe"+043C00F0</Address>
+      <Offsets>
+        <Offset>2B</Offset>
+        <Offset>300</Offset>
+        <Offset>8</Offset>
+        <Offset>80</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"P2 boss flag pointer"</Description>
+      <LastState Value="0" RealAddress="2102AA33DCB"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>"GGST-Win64-Shipping.exe"+043C00F0</Address>
+      <Offsets>
+        <Offset>2B</Offset>
+        <Offset>308</Offset>
+        <Offset>8</Offset>
+        <Offset>80</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"Valid boss flag values: 1 (survival boss), 2 (stage 8 boss), 3 (stage 9 boss)"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>Really do not try to use this online because it just won't work. Don't try to cheat, thanks :)
+</Comments>
+  <LuaScript>GGSTBossFlagSetter.show()
+local p1addr = AddressList.getMemoryRecordByDescription('P1 boss flag pointer')
+local p2addr = AddressList.getMemoryRecordByDescription('P2 boss flag pointer')
+
+function myattach()
+  if getProcessIDFromProcessName("GGST-Win64-Shipping.exe") ~= nil then
+     t1.destroy()
+    openProcess("GGST-Win64-Shipping.exe")
+    t2=createTimer(nil);
+    timer_setInterval(t2,10000)
+    timer_onTimer(t2,EnableButtons)
+  end
+end
+
+t1=createTimer(nil);
+timer_setInterval(t1,10)
+timer_onTimer(t1,myattach)
+
+function EnableButtons()
+if p1addr and p2addr then
+    t2.destroy()
+    GGSTBossFlagSetter.Player1Group.Enabled = true
+    GGSTBossFlagSetter.Player2Group.Enabled = true
+    end
+end
+
+function GGSTBossFlagSetter_P1DefaultClick(sender)
+if p1addr ~= nil then
+  p1addr.value = 0
+  p1addr.Active=false
+end
+end
+
+function GGSTBossFlagSetter_P1SPClick(sender)
+if p1addr ~= nil then
+  p1addr.value = 1
+  p1addr.Active=true
+end
+end
+
+function GGSTBossFlagSetter_P1BossClick(sender)
+if p1addr ~= nil then
+  p1addr.value= 2
+  p1addr.Active=true
+end
+end
+
+function GGSTBossFlagSetter_P1EXBossClick(sender)
+if p1addr ~= nil then
+  p1addr.value= 3
+  p1addr.Active=true
+end
+end
+
+function GGSTBossFlagSetter_P2DefaultClick(sender)
+
+if p2addr ~= nil then
+  p2addr.value= 0
+  p2addr.Active=false
+end
+end
+
+function GGSTBossFlagSetter_P2SPClick(sender)
+if p2addr ~= nil then
+  p2addr.value= 1
+  p2addr.Active=true
+end
+end
+
+function GGSTBossFlagSetter_P2BossClick(sender)
+if p2addr ~= nil then
+  p2addr.value= 2
+  p2addr.Active=true
+end
+end
+
+function GGSTBossFlagSetter_P2EXBossClick(sender)
+if p2addr ~= nil then
+  p2addr.value= 3
+  p2addr.Active=true
+end
+end
+
+function AboutWindow_AboutWindowCloseClick(sender)
+AboutWindow.close()
+end
+
+function AboutWindow_FormClose(sender)
+return caHide
+end
+
+function GGSTBossFlagSetter_AboutButtonClick(sender)
+AboutWindow.show()
+end
+
+function GGSTBossFlagSetter_FormClose(sender)
+CloseClick()
+end
+
+function CloseClick()
+  closeCE()
+  return caFree
+end
+
+</LuaScript>
+</CheatTable>
