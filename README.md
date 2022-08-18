@@ -7,3 +7,4 @@ Usage:
 
 Click on the corresponding radio buttons for each player to enable boss character behavior and stats.
 As of game version 2.02, only applicable to Nagoriyuki and Ky Kiske.
+Survival works on all characters.
