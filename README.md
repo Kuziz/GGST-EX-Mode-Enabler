@@ -6,5 +6,5 @@ I'm a noob so don't yell at me too much if you don't like my Lua code :(
 Usage:
 
 Click on the corresponding radio buttons for each player to enable boss character behavior and stats.
-As of game version 2.02, only applicable to Nagoriyuki and Ky Kiske.
+As of game version 2.02, Boss and EX Boss only applicable to Nagoriyuki and Ky Kiske.
 Survival works on all characters.
