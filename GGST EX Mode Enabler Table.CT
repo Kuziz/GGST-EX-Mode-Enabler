@@ -11,7 +11,7 @@
       <LastState Value="0" RealAddress="2102AA33D2B"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Byte</VariableType>
-      <Address>"GGST-Win64-Shipping.exe"+043C00F0</Address>
+      <Address>"GGST-Win64-Shipping.exe"+043C10F0</Address>
       <Offsets>
         <Offset>2B</Offset>
         <Offset>300</Offset>
@@ -25,7 +25,7 @@
       <LastState Value="0" RealAddress="2102AA33DCB"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Byte</VariableType>
-      <Address>"GGST-Win64-Shipping.exe"+043C00F0</Address>
+      <Address>"GGST-Win64-Shipping.exe"+043C10F0</Address>
       <Offsets>
         <Offset>2B</Offset>
         <Offset>308</Offset>
